@@ -41,8 +41,8 @@ void insert_at_beginning(struct node **head,int x)
 	temp->next=*head;
 	*head=temp;
 }
-void insert_at_position(struct node **,int ,int,int);
-void insert_at_position(struct node **head,int pos,int x,int size)
+void insert_at_position(struct node *,int ,int,int);
+void insert_at_position(struct node *head,int pos,int x,int size)
 {
 	if(head==NULL)
 	{
@@ -67,6 +67,7 @@ void insert_at_position(struct node **head,int pos,int x,int size)
 		while(pos!=1)
 		{
 			ptr=ptr->next;
+            pos--;
 		}
 		temp->next=ptr->next;
 		ptr->next=temp;
@@ -117,7 +118,12 @@ int main()
  display(head);
  size=count_of_nodes(head);
  printf("Number of nodes:%d\n",size);
- insert_at_position(&head,2,70,size);
+ printf("Before inserting at position\n");
+ display(head);
+ size=count_of_nodes(head);
+ printf("Number of nodes:%d\n",size);
+ insert_at_position(head,2,70,size);
+ printf("After inserting at position\n");
  display(head);
  size=count_of_nodes(head);
  printf("Number of nodes:%d\n",size);  
