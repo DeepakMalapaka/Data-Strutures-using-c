@@ -41,6 +41,20 @@ void insert_at_beginning(struct node **head,int x)
 	temp->next=*head;
 	*head=temp;
 }
+
+void insert_at_end(struct node *,int );
+void insert_at_end(struct node *head,int x) 
+{
+	struct node *temp=malloc(sizeof(struct node));
+	temp->data=x;
+	temp->next=NULL;
+	struct node *ptr=head;
+	while(ptr->next!=NULL)
+	{
+		ptr=ptr->next;
+	}
+	ptr->next=temp;
+}
 void insert_at_position(struct node *,int ,int,int);
 void insert_at_position(struct node *head,int pos,int x,int size)
 {
@@ -72,20 +86,18 @@ void insert_at_position(struct node *head,int pos,int x,int size)
 		temp->next=ptr->next;
 		ptr->next=temp;
 	}
+    if(pos==size)
+    {
+      insert_at_end(head,x);
+    }
 	
 }
-void insert_at_end(struct node *,int );
-void insert_at_end(struct node *head,int x) 
+void printing_of_nodes(struct node *);
+void printing_of_nodes(struct node *head)
 {
-	struct node *temp=malloc(sizeof(struct node));
-	temp->data=x;
-	temp->next=NULL;
-	struct node *ptr=head;
-	while(ptr->next!=NULL)
-	{
-		ptr=ptr->next;
-	}
-	ptr->next=temp;
+ display(head);
+ int size=count_of_nodes(head);
+ printf("Number of nodes:%d\n",size);
 }
 int main() 
 {
@@ -109,32 +121,21 @@ int main()
   current2->data=40;
   current1->next=current2;
   current2->next=NULL;
+  int *size=count_of_nodes(head);
  printf("Before inserting at beginning\n");
- display(head);
- int size=count_of_nodes(head);
- printf("Number of nodes:%d\n",size);
+ printing_of_nodes(head);
  insert_at_beginning(&head,60);
  printf("After inserting at beginning\n");
- display(head);
- size=count_of_nodes(head);
- printf("Number of nodes:%d\n",size);
+ printing_of_nodes(head);
  printf("Before inserting at position\n");
- display(head);
- size=count_of_nodes(head);
- printf("Number of nodes:%d\n",size);
+ printing_of_nodes(head);
  insert_at_position(head,2,70,size);
  printf("After inserting at position\n");
- display(head);
- size=count_of_nodes(head);
- printf("Number of nodes:%d\n",size);  
+ printing_of_nodes(head);
  printf("Before inserting at end\n");
- display(head);
- size=count_of_nodes(head);
- printf("Number of nodes:%d\n",size);
+ printing_of_nodes(head);
  insert_at_end(head,50); 
  printf("After inserting at end\n");
- display(head); 
- size=count_of_nodes(head);
- printf("Number of nodes:%d\n",size);
+ printing_of_nodes(head);
  return 0; 
 }
