@@ -62,14 +62,18 @@ void insert_at_position(struct node *head,int pos,int x,int size)
 	{
 		printf("List is empty");
 	}
-	if(pos<1||pos>size)
+	else if(pos<1)
 	{
 		printf("Invalid position");
 	}
-	if(pos==1)
+	else if(pos==1)
 	{
 		insert_at_beginning(&head,x);
 	}
+	else if(pos>=size)
+    {
+      insert_at_end(head,x);
+    }
 	else
 	{
 		struct node *temp=malloc(sizeof(struct node *));
@@ -86,18 +90,13 @@ void insert_at_position(struct node *head,int pos,int x,int size)
 		temp->next=ptr->next;
 		ptr->next=temp;
 	}
-    if(pos==size)
-    {
-      insert_at_end(head,x);
-    }
-	
 }
-void printing_of_nodes(struct node *);
-void printing_of_nodes(struct node *head)
+void printing_of_nodes(struct node *,int *);
+void printing_of_nodes(struct node *head,int *size)
 {
  display(head);
- int size=count_of_nodes(head);
- printf("Number of nodes:%d\n",size);
+ *size=count_of_nodes(head);
+ printf("Number of nodes:%d\n",*size);
 }
 int main() 
 {
@@ -121,21 +120,16 @@ int main()
   current2->data=40;
   current1->next=current2;
   current2->next=NULL;
-  int *size=count_of_nodes(head);
- printf("Before inserting at beginning\n");
- printing_of_nodes(head);
+  int size=count_of_nodes(head);
+ printing_of_nodes(head,&size);
  insert_at_beginning(&head,60);
  printf("After inserting at beginning\n");
- printing_of_nodes(head);
- printf("Before inserting at position\n");
- printing_of_nodes(head);
- insert_at_position(head,2,70,size);
+ printing_of_nodes(head,&size);
+ insert_at_position(head,5,70,&size);
  printf("After inserting at position\n");
- printing_of_nodes(head);
- printf("Before inserting at end\n");
- printing_of_nodes(head);
+ printing_of_nodes(head,&size);
  insert_at_end(head,50); 
  printf("After inserting at end\n");
- printing_of_nodes(head);
+ printing_of_nodes(head,&size);
  return 0; 
 }
