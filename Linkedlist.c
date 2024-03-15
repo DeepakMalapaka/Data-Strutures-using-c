@@ -104,6 +104,45 @@ void delete_at_end(struct node *head)
  current->next=NULL;
  free(ptr);
 }
+void delete_at_beginning(struct node **);
+void delete_at_beginning(struct node **head)
+{
+ struct node *ptr=*head;
+ (*head)=(*head)->next;
+ free(ptr);
+}
+void delete_at_position(struct node *,int ,int);
+void delete_at_position(struct node *head,int pos,int size)
+{
+         if(head==NULL)
+	{
+		printf("List is empty");
+	}
+	else if(pos<1||pos>size+1)
+	{
+		printf("Invalid position\n");
+	}
+	else if(pos==1)
+	{
+		delete_at_beginning(&head);
+	}
+	else if(pos==size)
+    	{
+      		delete_at_end(head);
+    	}
+	else
+	{
+		struct node *ptr=head;
+		struct node *temp=head;
+		while(pos!=1)
+		{
+		 ptr=ptr->next;
+		 pos--;
+		}	
+		temp->next=ptr->next;
+		free(ptr);
+	}
+}
 void printing_of_nodes(struct node *);
 void printing_of_nodes(struct node *head)
 {
@@ -112,7 +151,7 @@ void printing_of_nodes(struct node *head)
  size=count_of_nodes(head);
  printf("Number of nodes:%d\n",size);
 }
-int main() 
+int main()
 {
  struct node *head;
   head=malloc(sizeof(struct node));
@@ -148,5 +187,11 @@ int main()
  delete_at_end(head);
  printf("After deleting at end\n");
  printing_of_nodes(head); 
+ delete_at_beginning(&head);
+ printf("After deleting at beginning\n");
+ printing_of_nodes(head);
+ delete_at_position(head,5,count_of_nodes(head));
+ printf("After deleting at postion\n");
+ printing_of_nodes(head);
  return 0; 
 }
