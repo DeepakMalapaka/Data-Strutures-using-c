@@ -20,8 +20,8 @@ int count_of_nodes(struct node *head)
 void display(struct node *);
 void display(struct node *head)
 {
-	struct node *t=head;
-	while(t!=NULL)
+    struct node *t=head;
+    while(t!=NULL)
     {
      printf("%4d",t->data);
      t=t->next;
@@ -91,6 +91,19 @@ void insert_at_position(struct node *head,int pos,int x,int size)
 		ptr->next=temp;
 	}
 }
+void delete_at_end(struct node *);
+void delete_at_end(struct node *head)
+{
+ struct node *ptr=head;
+ struct node *current;
+ while(ptr->next!=NULL)
+ {
+  current=ptr;
+  ptr=ptr->next;
+ }
+ current->next=NULL;
+ free(ptr);
+}
 void printing_of_nodes(struct node *);
 void printing_of_nodes(struct node *head)
 {
@@ -132,5 +145,8 @@ int main()
  insert_at_end(head,70);
  printf("After inserting at end\n" );
  printing_of_nodes(head);
+ delete_at_end(head);
+ printf("After deleting at end\n");
+ printing_of_nodes(head); 
  return 0; 
 }
