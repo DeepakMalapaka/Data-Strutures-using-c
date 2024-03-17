@@ -151,6 +151,22 @@ void printing_of_nodes(struct node *head)
  size=count_of_nodes(head);
  printf("Number of nodes:%d\n",size);
 }
+void search(struct node *,int );
+void search(struct node *head,int key)
+{
+ int count=0;
+ struct node *ptr=head;
+ while(ptr!=NULL)
+ {
+   count++;
+   if(key==ptr->data)
+   {
+    printf("Key is found at position %d",count);
+    return;
+   }
+   ptr=ptr->next;
+ }
+}
 int main()
 {
  struct node *head;
@@ -193,5 +209,9 @@ int main()
  delete_at_position(head,5,count_of_nodes(head));
  printf("After deleting at postion\n");
  printing_of_nodes(head);
+ int key;
+ printf("Enter a element to search ");
+ scanf("%d",&key);
+ search(head,key);
  return 0; 
 }
