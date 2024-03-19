@@ -166,6 +166,7 @@ void search(struct node *head,int key)
    }
    ptr=ptr->next;
  }
+ printf("**Key is not found**\n");
 }
 int main()
 {
