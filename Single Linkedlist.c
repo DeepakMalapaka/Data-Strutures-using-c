@@ -71,7 +71,7 @@ void insert_at_position(struct node *head,int pos,int x,int size)
 	{
 		insert_at_beginning(&head,x);
 	}
-	else if(pos==size)
+	else if(pos==size+1)
     	{
       		insert_at_end(head,x);
     	}
