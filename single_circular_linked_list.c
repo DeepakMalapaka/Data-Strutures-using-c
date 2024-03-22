@@ -10,7 +10,7 @@ void search(struct node *tail,int key)
 {
  struct node *ptr=tail->next;
  int count=0;
- while(ptr!=NULL)
+ while(ptr!=tail)
  {
   count++;
   if(key==ptr->data)
