@@ -43,7 +43,7 @@ int main()
  }
  return 0;
 }
-int bubble(int a[],int n) 
+void bubble(int a[],int n) 
 {
  int t,i,j;
  printf("\nBefore sorting\n");
