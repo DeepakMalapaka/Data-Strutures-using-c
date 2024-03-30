@@ -136,6 +136,7 @@ void delete_at_position(struct node *head,int pos,int size)
 		struct node *temp=head;
 		while(pos!=1)
 		{
+		 temp=ptr;
 		 ptr=ptr->next;
 		 pos--;
 		}	
