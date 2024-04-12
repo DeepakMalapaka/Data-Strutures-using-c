@@ -204,7 +204,7 @@ int main ()
 	printf("After inserting at position\n");
 	insert_at_position(head,2,60,count_of_nodes(head));
 	display(head);
-    printf("After deleting at end\n");
+    	printf("After deleting at end\n");
 	delete_at_end(head);
 	display(head);
 	printf("After deleting at position\n");
