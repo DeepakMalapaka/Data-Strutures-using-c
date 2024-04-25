@@ -32,7 +32,11 @@ void display();
 void display()
 {
 	int i;
-	printf("Queue is:");
+	printf("Queue is ");
+	if(isEmpty())
+	{
+		printf("empty\n");
+	}
 	for(i=front;i<=rear;i++)
 	{
 		printf("%d ",Q[i]);
