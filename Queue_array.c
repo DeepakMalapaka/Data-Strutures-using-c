@@ -32,6 +32,7 @@ void display();
 void display()
 {
 	int i;
+	printf("Queue is:");
 	for(i=front;i<=rear;i++)
 	{
 		printf("%d ",Q[i]);
@@ -66,11 +67,24 @@ int  dequeue()
 }
 int main()
 {
-	enqueue(10);
-	enqueue(20);
-	display();
-	printf("Dequeued element is :%d \n",dequeue());
-	printf("Dequeued element is :%d \n",dequeue());
-	printf("Dequeued element is :%d \n",dequeue());
+	int x,d;
+	while(1)
+	{
+		printf(" 1:Enqueue \n 2:Dequeue \n 3:display \n 4:To exit the programm \n");
+		scanf("%d",&x);
+		switch(x) 
+		{
+			case 1:
+					printf("Enter a number to enqueue:");
+					scanf("%d",&d);
+					enqueue(d);
+					break;
+			case 2:dequeue();
+					break;
+			case 3:display();
+					break;
+			case 4:exit(1);		
+		}
+	}
 	return 0;
 }
