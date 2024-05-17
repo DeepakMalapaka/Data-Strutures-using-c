@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<math.h>
 #define max 100
 char infix[max],postfix[max],stack[max];
 int top=-1;
@@ -107,7 +108,7 @@ void display(char string[max])
 	}
 	printf("\n");
 }
-void postfix_evalute(void )
+int postfix_evalute(void )
 {
 	int a,b,i;
 	for(i=0;postfix[i]!='\0';i++)
@@ -116,8 +117,8 @@ void postfix_evalute(void )
 			push(postfix[i]-'0');
 		else 
 		{
-			a=pop()-'0';
-			b=pop()-'0';
+			a=pop();
+			b=pop();
 			switch(postfix[i])
 			{
 				case '+':push(b+a);
@@ -128,13 +129,13 @@ void postfix_evalute(void )
 					break;
 				case '/':push(b/a);
 					break;
-				case '^':push(b^a);
+				case '^':push(pow(b,a));
 					break;
 				
 			}
 		}
 	}
-	push('\0');
+	return pop();
 }
 int main()
 {
@@ -143,8 +144,8 @@ int main()
 	printf("The infix expression is :");
 	display(infix);
 	infix_to_postfix();
-	printf("The post fix expression is :");	display(postfix);
-	postfix_evalute();
-	display(int (stack));
+	printf("The post fix expression is :");	
+	display(postfix);
+	printf("The postfix evaluate is %d",postfix_evalute());
 	return 0;
 }
