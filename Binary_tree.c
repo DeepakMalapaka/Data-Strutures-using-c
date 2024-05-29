@@ -50,11 +50,11 @@ void Preorder(struct node *root)
 	printf("%4d",root->data);
 	if(root->left!=NULL)
 	{
-		Inorder(root->left);
+		Preorder(root->left);
 	}
 	if(root->right!=NULL)
 	{
-		Inorder(root->right);	
+		Preorder(root->right);	
 	}
 }
 void Postorder(struct node *);
@@ -62,11 +62,11 @@ void Postorder(struct node *root)
 {
 	if(root->left!=NULL)
 	{
-		Inorder(root->left);
+		Postorder(root->left);
 	}
 	if(root->right!=NULL)
 	{
-		Inorder(root->right);	
+		Postorder(root->right);	
 	}
 	printf("%4d",root->data);
 }
